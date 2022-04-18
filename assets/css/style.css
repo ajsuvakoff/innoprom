@@ -26,15 +26,41 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
-
-/*Container*/
-.container {
-
+#container {
+    background-image: url(https://i.ibb.co/20JD2PP/background.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: scroll;
+    background-position: top;
+    column-count: 3;
+    text-align: center;
     width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    height: 240vh;
-    padding: 60px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: auto;
+}
+
+#video1 {
+    max-width: 29%;
+    position: absolute;
+    margin-top: 26%;
+    margin-left: 8%;
+}
+
+#video2 {
+    width: 29%;
+    position: absolute;
+    margin-top: 26%;
+    margin-left: 34.8%;
+}
+
+#video3 {
+    width: 29%;
+    position: absolute;
+    margin-top: 26%;
+    margin-left: 63%;
 }
 
 .player-ctrl {

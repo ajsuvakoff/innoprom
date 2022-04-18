@@ -15,39 +15,11 @@
 
 <body>
 
-<div id="container"
-     style="
-      background-image: url(https://i.ibb.co/20JD2PP/background.png);
-      background-repeat: no-repeat;
-      background-size: 100%;
-      background-attachment: scroll;
-      background-position: top;
-      column-count: 3;
-      text-align: center;
-      width: 100%;
-      height: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      overflow: auto;
-    "
->
+<div id="container">
     <div id="videos">
+        <div id="video1">
 
-        <div
-                id="video1"
-                style="
-        max-width: 29%;
-        position: absolute;
-        margin-top: 26%;
-        margin-left: 8%;
-      "
-        >
-            <img
-                    alt="video1"
-                    src="https://i.ibb.co/9NHCGP2/Video.png"
-                    style="max-width: 100%"
-            />
+            <img alt="video1" src="https://i.ibb.co/9NHCGP2/Video.png" style="max-width: 100%"/>
 
             <br><br><br>
             <h1>Государство</h1>
@@ -88,20 +60,11 @@
                 </script>
             </div>
         </div>
-        <div
-                id="video2"
-                style="
-        width: 29%;
-        position: absolute;
-        margin-top: 26%;
-        margin-left: 34.8%;
-      "
-        >
-            <img
-                    alt="video2"
-                    src="https://i.ibb.co/9NHCGP2/Video.png"
-                    style="max-width: 100%"
-            />
+
+        <div id="video2">
+
+            <img alt="video2" src="https://i.ibb.co/9NHCGP2/Video.png" style="max-width: 100%"/>
+
             <br><br><br>
             <h1>Бизнес</h1>
 
@@ -141,21 +104,13 @@
                 </script>
             </div>
         </div>
-        <div
-                id="video3"
-                style="
-        width: 29%;
-        position: absolute;
-        margin-top: 26%;
-        margin-left: 63%;
-      "
-        >
-            <img
-                    alt="video3"
-                    src="https://i.ibb.co/9NHCGP2/Video.png"
-                    style="max-width: 100%"
-            />
+
+        <div id="video3">
+
+            <img alt="video3" src="https://i.ibb.co/9NHCGP2/Video.png" style="max-width: 100%"/>
+
             <br><br><br>
+
             <h1>Потребитель</h1>
 
             <div style="margin-top: 5%">
@@ -215,73 +170,84 @@
     let HTP = "http://"
     let IP = "192.168.89.48:8080"
 
+    let video1id = "1650288212032"
+    let video2id = "1650288212215"
+    let video3id = "1650288212371"
+
+    function connect() {
+        const socket = new WebSocket('ws://' + IP + '/api/v1');
+    // Connection opened
+    socket.addEventListener('open', function (event) {
+    });
+    // Listen for messages
+    socket.addEventListener('message', function (event) {
+    });
+
+    socket.onopen = function() {
+        console.log("WS:Соединение установлено");
+    };
+        socket.onclose = function(e) {
+            console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
+            setTimeout(function() {
+                connect();
+            }, 1000);
+        };
+        return webSocket=socket
+    }
+    connect();
+
     function Play1() {
         const xhr = new XMLHttpRequest()
         xhr.open('POST', '' + HTP + '' + IP + '/api/v1/composition/columns/1/connect')
         xhr.send()
+        webSocket.send(JSON.stringify({"action":"set","parameter":'/parameter/by-id/'+ video1id,"value":2}));
     }
 
     function Play2() {
         const xhr = new XMLHttpRequest()
         xhr.open('POST', '' + HTP + '' + IP + '/api/v1/composition/columns/2/connect')
         xhr.send()
+        webSocket.send(JSON.stringify({"action":"set","parameter":'/parameter/by-id/'+ video2id,"value":2}));
     }
 
     function Play3() {
         const xhr = new XMLHttpRequest()
         xhr.open('POST', '' + HTP + '' + IP + '/api/v1/composition/columns/3/connect')
         xhr.send()
+        webSocket.send(JSON.stringify({"action":"set","parameter":'/parameter/by-id/'+ video3id,"value":2}));
     }
 
     function Pause1() {
-        const xhr = new XMLHttpRequest()
-        xhr.open('POST', '' + HTP + '' + IP + '/api/v1/composition/columns/4/connect')
-        xhr.send()
+        webSocket.send(JSON.stringify({"action":"set","parameter":'/parameter/by-id/'+ video1id,"value":1}));
     }
 
     function Pause2() {
-        const xhr = new XMLHttpRequest()
-        xhr.open('POST', '' + HTP + '' + IP + '/api/v1/composition/columns/4/connect')
-        xhr.send()
+        webSocket.send(JSON.stringify({"action":"set","parameter":'/parameter/by-id/'+ video2id,"value":1}));
     }
 
     function Pause3() {
-        const xhr = new XMLHttpRequest()
-        xhr.open('POST', '' + HTP + '' + IP + '/api/v1/composition/columns/4/connect')
-        xhr.send()
+        webSocket.send(JSON.stringify({"action":"set","parameter":'/parameter/by-id/'+ video3id,"value":1}));
     }
 
     function Cycle() {
         const xhr = new XMLHttpRequest()
-        xhr.open('GET', '' + HTP + '' + IP + '/api/v1/composition/columns/5/connect')
+        xhr.open('POST', '' + HTP + '' + IP + '/api/v1/composition/columns/4/connect')
         xhr.send()
     }
 </script>
 
-
-<div id="preloader_malc">
-
+<div id="preloader_malc" style="width: 100%; height: 100%">
     <div>
-
-        <img
-                alt="load"
-                src="https://i.ibb.co/thcD43G/logoload.png"
-        />
-
+        <img alt="load" src="https://i.ibb.co/thcD43G/logoload.png"/>
     </div>
-
 </div>
 
 <script type="text/javascript"> // preloader
 
 window.onload = function () {
-
     setTimeout(function () {
-
         document.getElementById("preloader_malc").style.display = "none";
-
     }, 3000);
-
 };
 
 </script>
