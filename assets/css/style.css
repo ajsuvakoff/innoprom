@@ -60,3 +60,30 @@ a {
     height: 50px;
     cursor: pointer;
 }
+
+#preloader_malc {
+                          position: fixed;
+                          top: 0;
+                          left: 0;
+                          right: 0;
+                          bottom: 0;
+                          background: rgba(0, 0, 0, .8);
+                          z-index: 99
+                      }
+
+#preloader_malc div {
+    background: #ffffff;
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    font-size: 15px;
+    color: #111;
+    text-align: center;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto
+}

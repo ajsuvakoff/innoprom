@@ -7,9 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -92,10 +89,7 @@
                     };
 
                 </script>
-
             </div>
-
-
         </div>
         <div
                 id="video2"
@@ -147,9 +141,7 @@
                     };
 
                 </script>
-
             </div>
-
         </div>
         <div
                 id="video3"
@@ -203,8 +195,6 @@
                 </script>
 
             </div>
-
-
         </div>
     </div>
 
@@ -224,7 +214,7 @@
 <script>
 
     let HTP = "http://"
-    let IP = "192.168.0.199:8080"
+    let IP = "192.168.89.48:8080"
 
     function Play1() {
         const xhr = new XMLHttpRequest()
@@ -244,7 +234,7 @@
         xhr.send()
     }
 
-    function Pause3() {
+    function Pause1() {
         const xhr = new XMLHttpRequest()
         xhr.open('POST', '' + HTP + '' + IP + '/api/v1/composition/columns/4/connect')
         xhr.send()
@@ -256,7 +246,7 @@
         xhr.send()
     }
 
-    function Pause1() {
+    function Pause3() {
         const xhr = new XMLHttpRequest()
         xhr.open('POST', '' + HTP + '' + IP + '/api/v1/composition/columns/4/connect')
         xhr.send()
@@ -264,7 +254,7 @@
 
     function Cycle() {
         const xhr = new XMLHttpRequest()
-        xhr.open('GET', '' + HTP + '' + IP + '/api/?Function=ScriptStart&Value=MATCH4')
+        xhr.open('GET', '' + HTP + '' + IP + '/api/v1/composition/columns/5/connect')
         xhr.send()
     }
 </script>
@@ -283,36 +273,7 @@
 
 </div>
 
-<style type="text/css">
-    #preloader_malc {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, .8);
-        z-index: 99
-    }
-
-    #preloader_malc div {
-        background: #ffffff;
-        width: 100%;
-        height: 100%;
-        line-height: 40px;
-        font-size: 15px;
-        color: #111;
-        text-align: center;
-        position: fixed;
-        z-index: 999;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto
-    }
-</style>
-
-<script type="text/javascript">
+<script type="text/javascript"> // preloader
 
     window.onload = function () {
 
