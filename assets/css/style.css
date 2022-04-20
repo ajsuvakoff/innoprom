@@ -4,6 +4,14 @@ body {
     font-family: 'PT Sans', sans-serif;
     font-size: 15pt;
     color: black;
+    position: relative;
+    background-image: url(https://i.ibb.co/20JD2PP/background.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: scroll;
+    overflow-x: hidden;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 *,
@@ -12,12 +20,12 @@ body {
 }
 
 h1 {
-    font-size: 50px;
+    font-size: 2vw;
     color: #63666a;
 }
 
 h2 {
-    font-size: 50px;
+    font-size: 2vw;
     font-weight: lighter;
     color: #63666a;
 }
@@ -27,37 +35,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #container {
-    background-image: url(https://i.ibb.co/20JD2PP/background.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-attachment: scroll;
-    background-position: top;
     column-count: 3;
     text-align: center;
-    width: 100%;
+    max-width: 100%;
     height: 100%;
-    position: fixed;
     top: 0;
     left: 0;
-    overflow: auto;
 }
 
 #video1 {
-    max-width: 29%;
+    max-width: 26%;
     position: absolute;
     margin-top: 26%;
     margin-left: 8%;
 }
 
 #video2 {
-    width: 29%;
+    max-width: 26%;
     position: absolute;
     margin-top: 26%;
-    margin-left: 34.8%;
+    margin-left: 35.5%;
 }
 
 #video3 {
-    width: 29%;
+    max-width: 26%;
     position: absolute;
     margin-top: 26%;
     margin-left: 63%;
@@ -68,27 +69,24 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     align-items: center;
     width: 78%;
-    font-size: 10em;
-    margin-top: -4%
-
-}
-
-.player-ctrl {
-    height: 0;
+    font-size: 10vw;
+    margin-top: -90%;
 }
 
 i {
-    font-size: 50em;
     color: white;
     line-height: 50px;
+    position: absolute;
 }
 
 a {
     border-radius: 5px;
-    margin-top: -150%;
     width: 50px;
     height: 50px;
     cursor: pointer;
+    position: absolute;
+    margin-top: 5.2vw;
+    margin-left: -2vw;
 }
 
 #preloader_malc {
@@ -103,13 +101,11 @@ a {
 
 #preloader_malc div {
     background: #ffffff;
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
     line-height: 40px;
     font-size: 15px;
     color: #111;
     text-align: center;
-    position: fixed;
     z-index: 999;
     top: 0;
     left: 0;
