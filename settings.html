@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="assets/script/script.js"></script>
+<link href="assets/css/settings.css" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <title>Настройки</title>
+</head>
+<body>
+
+<div class="subscribe-box">
+    <h2 style="font-family: 'PT Sans', sans-serif">Введите IP-адрес компьютера с Resolume Arena</h2>
+    <form class="subscribe">
+        <input id='userInput' placeholder="IP of RESOLUME ARENA" required="required"/>
+        <button onClick='userSubmit()'> <span>Сохранить</span></button>
+    </form>
+</div>
+
+<script>
+
+    document.getElementById('userInput').value = IP
+
+    function userSubmit() {
+        let UI = document.getElementById('userInput').value;
+        localStorage.setItem("addr", UI)
+        document.getElementById('result').innerHTML='Успешно сохранено!';
+    }
+
+
+</script>
+
+</body>
+</html>

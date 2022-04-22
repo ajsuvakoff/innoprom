@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="/assets/script/script.js"></script>
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>ИННОПРОМ</title>
 </head>
@@ -25,37 +26,37 @@
 
             <div class="player-ctrl">
                 <!-- Play Button -->
-                <a id="play1" onclick="playShow1()" style="margin-top: 2vw"><i style="max-width: 100%" aria-hidden="true" class="fa fa-play-circle-o"></i></a>
+                <a id="play1" onclick="playShow1()" style="margin-top: 2vw"><i aria-hidden="true"
+                                                                               class="fa fa-play-circle-o"
+                                                                               style="max-width: 100%"></i></a>
                 <!-- Pause Button -->
                 <a id="pause1" onclick="pauseShow1()" style="display:none; margin-top: 2vw"><i aria-hidden="true"
-                                                                                                 class="fa fa-pause-circle"></i></a>
+                                                                                               class="fa fa-pause-circle"></i></a>
             </div>
 
-                <script>
+            <script>
 
-                    // Grab ID of play button
-                    let playBtn1 = document.getElementById('play1');
+                // Grab ID of play button
+                let playBtn1 = document.getElementById('play1');
 
-                    // Grab ID of pause button
-                    let pauseBtn1 = document.getElementById('pause1');
+                // Grab ID of pause button
+                let pauseBtn1 = document.getElementById('pause1');
 
-                    // Play audio & show pause btn
-                    let playShow1 = function () {
-                        Play1();
-                        console.log("play1");
-                        playBtn1.style.display = "none";
-                        pauseBtn1.style.display = "inline-block";
-                    };
+                // Play audio & show pause btn
+                let playShow1 = function () {
+                    Play1();
+                    playBtn1.style.display = "none";
+                    pauseBtn1.style.display = "inline-block";
+                };
 
-                    // Pause audio & show play btn
-                    let pauseShow1 = function () {
-                        Pause1();
-                        console.log("pause1");
-                        playBtn1.style.display = "inline-block";
-                        pauseBtn1.style.display = "none";
-                    };
+                // Pause audio & show play btn
+                let pauseShow1 = function () {
+                    Pause1();
+                    playBtn1.style.display = "inline-block";
+                    pauseBtn1.style.display = "none";
+                };
 
-                </script>
+            </script>
         </div>
 
         <div id="video2">
@@ -85,7 +86,6 @@
                     // Play audio & show pause btn
                     let playShow2 = function () {
                         Play2();
-                        console.log("play2");
                         playBtn2.style.display = "none";
                         pauseBtn2.style.display = "inline-block";
                     };
@@ -93,7 +93,6 @@
                     // Pause audio & show play btn
                     let pauseShow2 = function () {
                         Pause2();
-                        console.log("pause2");
                         playBtn2.style.display = "inline-block";
                         pauseBtn2.style.display = "none";
                     };
@@ -130,7 +129,6 @@
                     // Play audio & show pause btn
                     let playShow3 = function () {
                         Play3();
-                        console.log("play3");
                         playBtn3.style.display = "none";
                         pauseBtn3.style.display = "inline-block";
                     };
@@ -138,7 +136,6 @@
                     // Pause audio & show play btn
                     let pauseShow3 = function () {
                         Pause3();
-                        console.log("pause3");
                         playBtn3.style.display = "inline-block";
                         pauseBtn3.style.display = "none";
                     };
@@ -168,78 +165,6 @@
     </div>
 
 </div>
-
-<script>
-
-    let HTP = "http://"
-    let IP = "localhost:8080"
-
-    let video1id = "1650309173467"
-    let video2id = "1650288212215"
-    let video3id = "1650288212371"
-
-    function connect() {
-        const socket = new WebSocket('ws://' + IP + '/api/v1');
-    // Connection opened
-    socket.addEventListener('open', function (event) {
-    });
-    // Listen for messages
-    socket.addEventListener('message', function (event) {
-    });
-
-    socket.onopen = function() {
-        console.log("WS:Соединение установлено");
-    };
-        socket.onclose = function(e) {
-            console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
-            setTimeout(function() {
-                connect();
-            }, 1000);
-        };
-        return webSocket=socket
-    }
-    connect();
-
-    function Play1() {
-        const xhr = new XMLHttpRequest()
-        xhr.open('POST', '' + HTP + '' + IP + '/api/v1/composition/columns/1/connect')
-        xhr.send()
-        webSocket.send(JSON.stringify({"action":"set","parameter":'/parameter/by-id/'+ video1id,"value":2}));
-    }
-
-    function Play2() {
-        const xhr = new XMLHttpRequest()
-        xhr.open('POST', '' + HTP + '' + IP + '/api/v1/composition/columns/2/connect')
-        xhr.send()
-        webSocket.send(JSON.stringify({"action":"set","parameter":'/parameter/by-id/'+ video2id,"value":2}));
-    }
-
-    function Play3() {
-        const xhr = new XMLHttpRequest()
-        xhr.open('POST', '' + HTP + '' + IP + '/api/v1/composition/columns/3/connect')
-        xhr.send()
-        webSocket.send(JSON.stringify({"action":"set","parameter":'/parameter/by-id/'+ video3id,"value":2}));
-    }
-
-    function Pause1() {
-        webSocket.send(JSON.stringify({"action":"set","parameter":'/parameter/by-id/'+ video1id,"value":1}));
-    }
-
-    function Pause2() {
-        webSocket.send(JSON.stringify({"action":"set","parameter":'/parameter/by-id/'+ video2id,"value":1}));
-    }
-
-    function Pause3() {
-        webSocket.send(JSON.stringify({"action":"set","parameter":'/parameter/by-id/'+ video3id,"value":1}));
-    }
-
-    function Cycle() {
-        const xhr = new XMLHttpRequest()
-        xhr.open('POST', '' + HTP + '' + IP + '/api/v1/composition/columns/4/connect')
-        xhr.send()
-    }
-</script>
-
 
 
 <script type="text/javascript"> // preloader
