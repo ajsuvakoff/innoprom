@@ -2,7 +2,7 @@ let HTP = "http://"
 
 let IP = localStorage.getItem("addr");
 if (IP === null) {
-    localStorage.setItem("addr", "localhost:8888")
+    localStorage.setItem("addr", "localhost:8080")
 }
 
 class videoControl {
